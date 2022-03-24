@@ -1,56 +1,23 @@
-//Global Variables
+//Variables
 float rectXPic1, rectYPic1, rectWidthPic1, rectHeightPic1;
 float rectXPic2, rectYPic2, rectWidthPic2, rectHeightPic2;
 PImage pic1, pic2;
-float imageWidthRatioPic1=0.0, imageHeightRatioPic1=0.0, imageWidthRatioPic2=0.0, imageHeightRatioPic2=0.0; 
-Boolean widthPic1Larger=false, heightPic1Larger=false, widthPic2Larger=false, heightPic2Larger=false;
-int pic1Width = 507;
+//
+//Geometry
+size(900, 680); //fullScreen(); displayWidth, displayHeight
+//Landsacpe Presentation, not square or protrait
+//
+//Populating Variables
+pic1 = loadImage("istockphoto-174959827-170667a.jpg"); 
+pic2 = loadImage("download (1).jpg");
+//Aspect Ration Calculations
+int pic1Width = 507; 
 int pic1Height = 338;
 int pic2Width = 300;
 int pic2Height = 168;
 int largerPic1Dimension, smallerPic1Dimension, largerPic2Dimension, smallerPic2Dimension;
-float pic1WidthAdjusted, pic1HeightAdjusted, pic2WidthAdjusted, pic2HeightAdjusted;
-color red=#FF0000;
-//
-void setup() 
-{
-
-}//End setup
-//
-void draw() 
-{
-
-}//End draw
-//
-void keyPressed() 
-{
-
-}//End keypressed
-//
-void mousePressed() 
-{
-
-}//End mousepressed
-
-
-
-
-
-
-//Variables
-
-//
-//Geometry
-size(900, 680); //fullScreen(); displayWidth, displayHeight
-//Landscape Presentaion, not a square or portrait
-//
-//Populating Variables
-pic1 = loadImage("istockphoto-174959827-170667a.jpg"); //Dimensions: 507 width, 338 height
-pic2 = loadImage("download (1).jpg"); //Dimensions: 300 width, 168 height
-//
-//Aspect Ratio Calculations
-
-
+float imageWidthRatioPic1=0.0, imageHeightRatioPic1=0.0, imageWidthRatioPic2=0.0, imageHeightRatioPic2=0.0; 
+Boolean widthPic1Larger=false, heightPic1Larger=false, widthPic2Larger=false, heightPic2Larger=false;
 //
 if ( pic1Width >= pic1Height ) { //ID Larger Dimension: Landscape and Square
   largerPic1Dimension = pic1Width;
@@ -96,7 +63,7 @@ rectWidthPic2 = width*6/8;
 rectHeightPic2 = height*1/2;
 //
 // Final Aspect Ratio Calculations
-
+float pic1WidthAdjusted, pic1HeightAdjusted, pic2WidthAdjusted, pic2HeightAdjusted;
 pic1WidthAdjusted = rectWidthPic1 * imageWidthRatioPic1;
 pic1HeightAdjusted = rectHeightPic1 * imageHeightRatioPic1;
 pic2WidthAdjusted = rectWidthPic2 * imageWidthRatioPic2;
@@ -106,11 +73,16 @@ println (pic1WidthAdjusted, pic1HeightAdjusted, pic2WidthAdjusted, pic2HeightAdj
 //
 //
 //Rectangle Layout & Image Printing on Canvas
-rect(rectXPic1, rectYPic1, rectWidthPic1, rectHeightPic1); //Image 1, landscape presentation
+color red=#FF0000;
+fill(red);
+//rect(rectXPic1, rectYPic1, rectWidthPic1, rectHeightPic1); //Image 1, landscape presentation
 rect(rectXPic2, rectYPic2, rectWidthPic2, rectHeightPic2); //Image 2, landscape presentation 
 // Image using Rect() Variables
-image(pic1, rectXPic1, rectYPic1, rectWidthPic1, rectHeightPic1);
-image(pic2, rectXPic2, rectYPic2, rectWidthPic2, rectHeightPic2);
+//image(pic1, rectXPic1, rectYPic1, rectWidthPic1, rectHeightPic1);
+//image(pic2, rectXPic2, rectYPic2, rectWidthPic2, rectHeightPic2);
 // Change the Rect() Variables to Aspect Ratio
 image(pic1, rectXPic1, rectYPic1, pic1WidthAdjusted, pic1HeightAdjusted);
-image(pic2, rectXPic2, rectYPic2, pic2WidthAdjusted, pic2HeightAdjusted);
+println ("Image one looks good, put some text underneath to fill in the space."); //Great Design Change for Aspect Ratio
+//image(pic2, rectXPic2, rectYPic2, pic2WidthAdjusted, pic2HeightAdjusted);
+//Center image in rect(), pic2, by changing the yRect() value
+image(pic2, rectXPic2, rectYPic2+(rectYPic2*1/5), pic2WidthAdjusted, pic2HeightAdjusted);
